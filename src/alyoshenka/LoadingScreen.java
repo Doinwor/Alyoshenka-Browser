@@ -112,6 +112,8 @@ public class LoadingScreen {
     }
 
     private static Image loadImage(String path) {
+        Image res = BrowserWindow.loadFromResource(path);
+        if (res != null) return res;
         try {
             return new Image(new FileInputStream(path));
         } catch (Exception e) {

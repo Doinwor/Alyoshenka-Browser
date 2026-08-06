@@ -612,11 +612,22 @@ public BrowserWindow() {
     }
 
     private static Image loadImage(String path) {
+        Image res = loadFromResource(path);
+        if (res != null) return res;
         try {
             return new Image(new FileInputStream(path));
         } catch (Exception e) {
             return null;
         }
+    }
+
+    static Image loadFromResource(String path) {
+        try (java.io.InputStream in = BrowserWindow.class.getClassLoader().getResourceAsStream(path)) {
+            if (in != null) return new Image(in);
+        } catch (Exception e) {
+            // fall through to file
+        }
+        return null;
     }
 
     private void applyRetro(Button b) {

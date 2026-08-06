@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class AlyoshenkaBrowser extends Application {
 
@@ -42,6 +43,8 @@ public class AlyoshenkaBrowser extends Application {
     }
 
     private static Image tryLoad(String path) {
+        Image res = BrowserWindow.loadFromResource(path);
+        if (res != null) return res;
         try {
             return new Image(new FileInputStream(path));
         } catch (Exception e) {
