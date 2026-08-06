@@ -1,0 +1,10 @@
+.js .card, .js .feature, .js .why-item, .js .step, .js .faq-list details {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js .card.revealed, .js .feature.revealed, .js .why-item.revealed,
+.js .step.revealed, .js .faq-list details.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}

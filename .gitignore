@@ -1,0 +1,16 @@
+# Java build
+out/
+genout/
+lib/
+dist/
+*.class
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temp archives
+Alyoshenka-*.zip
