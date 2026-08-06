@@ -622,6 +622,12 @@ public BrowserWindow() {
     }
 
     static Image loadFromResource(String path) {
+        String rooted = path.startsWith("/") ? path : "/" + path;
+        try (java.io.InputStream in = BrowserWindow.class.getResourceAsStream(rooted)) {
+            if (in != null) return new Image(in);
+        } catch (Exception e) {
+            // fall through to file
+        }
         try (java.io.InputStream in = BrowserWindow.class.getClassLoader().getResourceAsStream(path)) {
             if (in != null) return new Image(in);
         } catch (Exception e) {
